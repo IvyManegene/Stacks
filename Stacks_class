@@ -1,0 +1,70 @@
+#include<iostream>
+using namespace std;
+class Node{
+	public:
+		int data;
+		Node* next;
+		
+		Node(){
+			this -> data = data;
+			next = NULL;
+		}
+};
+class Stack{
+private:
+	Node *top = NULL;
+	Node *temp = NULL ;
+public:
+	void push();
+	void pop();
+	void display();
+};
+
+void Stack::push()
+{
+	for(int i = 1;i <= 30; i++)
+	{
+		temp = new Node;//temporary pointer
+		temp->data = i;
+		temp->next = top;//The top of the stack add the element
+		top = temp;
+	}
+}
+void Stack::pop()
+{
+	temp = top;
+	if(top == NULL)//empty stack
+	{
+		cout<<"There's nothing in the stack"<<"\n\n";
+		
+	}
+		cout<<"Element deleted from stack is: "<<temp->data<<"\n\n";			
+		top = temp->next;
+		delete temp;//deleting from top since LIFO
+}
+void Stack::display()
+{
+	temp = top;//to be able to traverse through the stack
+	
+	if(top == NULL)
+	{
+		cout<<"The stack is empty!!"<<"\n\n";
+	}
+	cout<<"Below are elements in the stack."<<"\n\n";
+	while(temp != NULL)
+	{
+		cout<<temp->data<<" ";
+		temp = temp->next;
+	}
+	cout<<"\n\n";
+}
+int main()
+{
+	Stack s1;
+	
+	s1.push();
+	s1.display();
+	s1.pop();
+	cout<<"\t******After deletion in the stack******\t"<<"\n\n";
+	s1.display();
+}
